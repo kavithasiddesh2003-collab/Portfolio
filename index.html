@@ -88,10 +88,7 @@
     <div class="project-grid">
       <article class="project-card" data-cat="security fullstack">
         <div class="card-thumb thumb-security">
-          <img src="securevote-landing.png" alt="SecureVote landing page" class="thumb-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="thumb-icon">
-            <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="15.5" r="1.5"/></svg>
-          </div>
+          <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="15.5" r="1.5"/></svg>
         </div>
         <div class="card-top">
           <h4>SecureVote</h4>
@@ -106,15 +103,16 @@
           <span>Flask</span><span>Python</span><span>React</span><span>REST APIs</span><span>Paillier</span><span>Shamir Secret Sharing</span>
         </div>
         <div class="gallery">
-          <img src="securevote-register.png" alt="SecureVote voter registration page" onclick="openLightbox(this.src)">
-          <img src="securevote-login-voter.png" alt="SecureVote voter login page" onclick="openLightbox(this.src)">
-          <img src="securevote-login-admin.png" alt="SecureVote admin login page" onclick="openLightbox(this.src)">
-          <img src="securevote-admin-panel.png" alt="SecureVote admin panel, create election" onclick="openLightbox(this.src)">
-          <img src="securevote-admin-manage.png" alt="SecureVote admin panel, manage elections and voters" onclick="openLightbox(this.src)">
-          <img src="securevote-admin-results.png" alt="SecureVote admin election results view" onclick="openLightbox(this.src)">
-          <img src="securevote-voter-dashboard.png" alt="SecureVote voter dashboard" onclick="openLightbox(this.src)">
-          <img src="securevote-results-chart.png" alt="SecureVote election results chart" onclick="openLightbox(this.src)">
-          <img src="securevote-results-breakdown.png" alt="SecureVote vote breakdown view" onclick="openLightbox(this.src)">
+          <img src="securevote-landing.png" alt="SecureVote landing page" onclick="openLightbox(this)">
+          <img src="securevote-register.png" alt="SecureVote voter registration page" onclick="openLightbox(this)">
+          <img src="securevote-login-voter.png" alt="SecureVote voter login page" onclick="openLightbox(this)">
+          <img src="securevote-login-admin.png" alt="SecureVote admin login page" onclick="openLightbox(this)">
+          <img src="securevote-admin-panel.png" alt="SecureVote admin panel, create election" onclick="openLightbox(this)">
+          <img src="securevote-admin-manage.png" alt="SecureVote admin panel, manage elections and voters" onclick="openLightbox(this)">
+          <img src="securevote-admin-results.png" alt="SecureVote admin election results view" onclick="openLightbox(this)">
+          <img src="securevote-voter-dashboard.png" alt="SecureVote voter dashboard" onclick="openLightbox(this)">
+          <img src="securevote-results-chart.png" alt="SecureVote election results chart" onclick="openLightbox(this)">
+          <img src="securevote-results-breakdown.png" alt="SecureVote vote breakdown view" onclick="openLightbox(this)">
         </div>
         <div class="card-links">
           <a href="https://github.com/kavithasiddesh2003-collab/Online-Voting-System">Repository</a>
@@ -142,10 +140,10 @@
           <span>Arduino UNO</span><span>NodeMCU ESP8266</span><span>DHT11 Sensor</span><span>Blynk App</span><span>Embedded Systems</span>
         </div>
         <div class="gallery">
-          <img src="iot-project-2.jpg" alt="IoT project photo 2" onerror="this.remove()" onclick="openLightbox(this.src)">
-          <img src="iot-project-3.jpg" alt="IoT project photo 3" onerror="this.remove()" onclick="openLightbox(this.src)">
-          <img src="iot-project-4.jpg" alt="IoT project photo 4" onerror="this.remove()" onclick="openLightbox(this.src)">
-          <img src="iot-project-5.jpg" alt="IoT project photo 5" onerror="this.remove()" onclick="openLightbox(this.src)">
+          <img src="iot-project-2.jpg" alt="IoT project photo 2" onerror="this.remove()" onclick="openLightbox(this)">
+          <img src="iot-project-3.jpg" alt="IoT project photo 3" onerror="this.remove()" onclick="openLightbox(this)">
+          <img src="iot-project-4.jpg" alt="IoT project photo 4" onerror="this.remove()" onclick="openLightbox(this)">
+          <img src="iot-project-5.jpg" alt="IoT project photo 5" onerror="this.remove()" onclick="openLightbox(this)">
         </div>
       </article>
     </div>
@@ -228,7 +226,10 @@
 </main>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img" src="" alt="Enlarged photo">
+  <button class="lb-btn lb-prev" onclick="event.stopPropagation(); lbNav(-1)">‹</button>
+  <img id="lightbox-img" src="" alt="Enlarged photo" onclick="event.stopPropagation()">
+  <button class="lb-btn lb-next" onclick="event.stopPropagation(); lbNav(1)">›</button>
+  <button class="lb-close" onclick="closeLightbox()">×</button>
 </div>
 
 <script>
@@ -258,13 +259,31 @@
     });
   });
 
-  function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
+  let lbImages = [];
+  let lbIndex = 0;
+
+  function openLightbox(imgEl) {
+    lbImages = Array.from(imgEl.parentElement.querySelectorAll('img'));
+    lbIndex = lbImages.indexOf(imgEl);
+    showLightboxImage();
     document.getElementById('lightbox').classList.add('open');
+  }
+  function showLightboxImage() {
+    document.getElementById('lightbox-img').src = lbImages[lbIndex].src;
+  }
+  function lbNav(direction) {
+    lbIndex = (lbIndex + direction + lbImages.length) % lbImages.length;
+    showLightboxImage();
   }
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('open');
   }
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
 </body>
 </html>
