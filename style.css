@@ -137,6 +137,8 @@ footer { padding: 3.5rem 0 4.5rem; scroll-margin-top: 110px; }
 }
 .thumb-security { background: linear-gradient(135deg, #2a1240 0%, #13141F 100%); }
 .thumb-iot { background: linear-gradient(135deg, #10263a 0%, #13141F 100%); }
+.thumb-img { width: 100%; height: 100%; object-fit: cover; }
+.thumb-icon { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
 .card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
 .project-card h4 { font-size: 1.15rem; font-weight: 700; }
 .project-card .tag { font-size: 0.72rem; color: var(--accent2); border: 1px solid var(--accent2); padding: 0.15rem 0.55rem; border-radius: 999px; white-space: nowrap; }
@@ -149,6 +151,18 @@ footer { padding: 3.5rem 0 4.5rem; scroll-margin-top: 110px; }
 .card-links { margin-top: 1.1rem; display: flex; gap: 1.1rem; }
 .card-links a { font-size: 0.84rem; border-bottom: 1px solid var(--accent1); padding-bottom: 2px; }
 .card-links a:hover { color: var(--accent1); }
+
+.gallery { display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap; }
+.gallery img { width: 64px; height: 64px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 1px solid var(--line); transition: border-color 0.15s ease, transform 0.15s ease; }
+.gallery img:hover { border-color: var(--accent1); transform: scale(1.05); }
+
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 100;
+  background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
+  padding: 2rem; cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 8px; }
 
 /* skills */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
