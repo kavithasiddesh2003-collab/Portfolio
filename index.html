@@ -88,7 +88,10 @@
     <div class="project-grid">
       <article class="project-card" data-cat="security fullstack">
         <div class="card-thumb thumb-security">
-          <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="15.5" r="1.5"/></svg>
+          <img src="securevote-landing.png" alt="SecureVote landing page" class="thumb-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="thumb-icon">
+            <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="15.5" r="1.5"/></svg>
+          </div>
         </div>
         <div class="card-top">
           <h4>SecureVote</h4>
@@ -102,6 +105,17 @@
         <div class="stack">
           <span>Flask</span><span>Python</span><span>React</span><span>REST APIs</span><span>Paillier</span><span>Shamir Secret Sharing</span>
         </div>
+        <div class="gallery">
+          <img src="securevote-register.png" alt="SecureVote voter registration page" onclick="openLightbox(this.src)">
+          <img src="securevote-login-voter.png" alt="SecureVote voter login page" onclick="openLightbox(this.src)">
+          <img src="securevote-login-admin.png" alt="SecureVote admin login page" onclick="openLightbox(this.src)">
+          <img src="securevote-admin-panel.png" alt="SecureVote admin panel, create election" onclick="openLightbox(this.src)">
+          <img src="securevote-admin-manage.png" alt="SecureVote admin panel, manage elections and voters" onclick="openLightbox(this.src)">
+          <img src="securevote-admin-results.png" alt="SecureVote admin election results view" onclick="openLightbox(this.src)">
+          <img src="securevote-voter-dashboard.png" alt="SecureVote voter dashboard" onclick="openLightbox(this.src)">
+          <img src="securevote-results-chart.png" alt="SecureVote election results chart" onclick="openLightbox(this.src)">
+          <img src="securevote-results-breakdown.png" alt="SecureVote vote breakdown view" onclick="openLightbox(this.src)">
+        </div>
         <div class="card-links">
           <a href="https://github.com/kavithasiddesh2003-collab/Online-Voting-System">Repository</a>
         </div>
@@ -109,7 +123,10 @@
 
       <article class="project-card" data-cat="iot">
         <div class="card-thumb thumb-iot">
-          <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M8.5 13.5a5 5 0 0 1 7 0"/><path d="M5.5 10.5a9 9 0 0 1 13 0"/></svg>
+          <img src="iot-project.jpg" alt="IoT monitoring system photo" class="thumb-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="thumb-icon">
+            <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M8.5 13.5a5 5 0 0 1 7 0"/><path d="M5.5 10.5a9 9 0 0 1 13 0"/></svg>
+          </div>
         </div>
         <div class="card-top">
           <h4>IoT-Based Humidity &amp; Temperature Monitoring System</h4>
@@ -123,6 +140,12 @@
         </ul>
         <div class="stack">
           <span>Arduino UNO</span><span>NodeMCU ESP8266</span><span>DHT11 Sensor</span><span>Blynk App</span><span>Embedded Systems</span>
+        </div>
+        <div class="gallery">
+          <img src="iot-project-2.jpg" alt="IoT project photo 2" onerror="this.remove()" onclick="openLightbox(this.src)">
+          <img src="iot-project-3.jpg" alt="IoT project photo 3" onerror="this.remove()" onclick="openLightbox(this.src)">
+          <img src="iot-project-4.jpg" alt="IoT project photo 4" onerror="this.remove()" onclick="openLightbox(this.src)">
+          <img src="iot-project-5.jpg" alt="IoT project photo 5" onerror="this.remove()" onclick="openLightbox(this.src)">
         </div>
       </article>
     </div>
@@ -204,6 +227,10 @@
   </footer>
 </main>
 
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Enlarged photo">
+</div>
+
 <script>
   const filters = document.querySelectorAll('.filter');
   const cards = document.querySelectorAll('.project-card');
@@ -230,6 +257,14 @@
       a.classList.toggle('active', document.querySelector(a.getAttribute('href')) === current);
     });
   });
+
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
 </script>
 </body>
 </html>
